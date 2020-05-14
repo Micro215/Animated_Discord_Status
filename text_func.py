@@ -38,8 +38,15 @@ class func():
         sequence = main(text)
         return sequence
 
-    def running_line(self, text):
-        pass
+    def running_line(self, text, simbol=" "):
+        main = []
+        def show(text, maximum, symbol):
+             text = symbol * maximum + text
+             for i in range(len(text)):
+                 a = '{0}'.format(text[i:i + maximum])
+                 main.append(a)
+             return main
+        return show(text, len(text))
 
     def wave(self, text):
         main = []

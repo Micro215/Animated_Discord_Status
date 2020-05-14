@@ -25,12 +25,14 @@ def mods_ex(): #examples of modes
         print('["t", "te", "tex", "text", "tex", "te"]')
         input("Enter...")
 
-    def running_line(): #motion mode
-        print('in working')
+    def running_line(): #running_line mode
+        print("""['    ', '   t', '  te', ' tes', 'test', 'est', 'st', 't']
+p.s.
+In this version spaces will not be displayed as a discord""")
         input("Enter...")
 
     def wave(): #wave mode
-        print('in working')
+        print("['Test', 'tEst', 'teSt', 'tesT']")
         input("Enter...")
 
     while True:
@@ -38,8 +40,9 @@ def mods_ex(): #examples of modes
         print('''Select the mod you want to see:
         1>std
         2>stairs
-        3>running_line (dont work)
-        4>exit
+        3>running_line
+        4>wave
+        e>exit
         ''')
         choose = input(">")
 
@@ -66,6 +69,10 @@ def mods_ex(): #examples of modes
             wave()
             cls()
             continue
+
+        elif choose == "e":
+            cls()
+            break
 
         else:
             cls()
@@ -98,9 +105,6 @@ def chs(): #function for select settings
 
         elif choose == "3":
             mode = "running_line"
-            cls()
-            print("in working")
-            continue
 
         elif choose == "4":
             mode = "wave"
