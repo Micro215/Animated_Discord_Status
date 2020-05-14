@@ -1,6 +1,7 @@
 import requests as r
 from load import load
 import os, sys, time
+from datetime import datetime as dt
 
 def cls(): #clear command
     os.system("cls")
@@ -160,8 +161,8 @@ def work(mode, sltime):
         while True:
             for i in text:
                 print("the program works")
-                payload = {'custom_status': {'text': i,
-                                             "emoji_name": emoji}}
+                expires_time = dt.isoformat(dt.fromtimestamp(int(dt.timestamp(dt.utcnow())) + sltime + 3))
+                payload = {'custom_status': {'text': i, 'expires_at': expires_time, "emoji_name": emoji}}
                 a = r.patch(url, headers=head, json=payload)
                 print(a)
                 if a == '<Response [401]>':
