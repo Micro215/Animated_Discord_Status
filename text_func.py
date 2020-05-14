@@ -38,9 +38,9 @@ class func():
         sequence = main(text)
         return sequence
 
-    def running_line(self, text, simbol=" "):
+    def running_line(self, text):
         main = []
-        def show(text, maximum, symbol):
+        def show(text, maximum, symbol=" "):
              text = symbol * maximum + text
              for i in range(len(text)):
                  a = '{0}'.format(text[i:i + maximum])
