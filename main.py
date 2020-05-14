@@ -25,7 +25,11 @@ def mods_ex(): #examples of modes
         print('["t", "te", "tex", "text", "tex", "te"]')
         input("Enter...")
 
-    def motion(): #motion mode
+    def running_line(): #motion mode
+        print('in working')
+        input("Enter...")
+
+    def wave(): #wave mode
         print('in working')
         input("Enter...")
 
@@ -34,7 +38,7 @@ def mods_ex(): #examples of modes
         print('''Select the mod you want to see:
         1>std
         2>stairs
-        3>motion (dont work)
+        3>running_line (dont work)
         4>exit
         ''')
         choose = input(">")
@@ -53,12 +57,15 @@ def mods_ex(): #examples of modes
 
         elif choose == "3":
             cls()
-            motion()
+            running_line()
             cls()
             continue
 
         elif choose == "4":
-            break
+            cls()
+            wave()
+            cls()
+            continue
 
         else:
             cls()
@@ -66,7 +73,7 @@ def mods_ex(): #examples of modes
 
 def chs(): #function for select settings
     while True:
-        sltime = input("Enter Interval (recommend >= 5): ")
+        sltime = input("Enter Interval (recommend >= 1): ")
 
         try:
             sltime = float(sltime)
@@ -78,7 +85,8 @@ def chs(): #function for select settings
         print('''Select mode:
     1>standard
     2>stairs
-    3>motion
+    3>running_line
+    4>wave
 ''')
         choose = input(">")
 
@@ -89,9 +97,13 @@ def chs(): #function for select settings
             mode = "stairs"
 
         elif choose == "3":
+            mode = "running_line"
             cls()
             print("in working")
             continue
+
+        elif choose == "4":
+            mode = "wave"
 
         else:
             cls()
@@ -146,7 +158,10 @@ def work(mode, sltime):
                 print("the program works")
                 payload = {'custom_status': {'text': i,
                                              "emoji_name": emoji}}
-                r.patch(url, headers=head, json=payload)
+                a = r.patch(url, headers=head, json=payload)
+                print(a)
+                if a == '<Response [401]>':
+                    print("You enter invalid AuthToken")
                 time.sleep(sltime)
                 cls()
     except Exception:

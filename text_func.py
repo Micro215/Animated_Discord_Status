@@ -4,8 +4,10 @@ class func():
             sequence = self.standart(text)
         elif mode == "stairs":
             sequence = self.stairs(text)
-        elif mode == "motion":
-            sequence = self.motion(text)
+        elif mode == "running_line":
+            sequence = self.running_line(text)
+        elif mode == "wave":
+            sequence = self.wave(text)
         else:
             print("problems with mode choice")
 
@@ -36,5 +38,24 @@ class func():
         sequence = main(text)
         return sequence
 
-    def motion(self, text):
+    def running_line(self, text):
         pass
+
+    def wave(self, text):
+        main = []
+        for i in range(len(text)):
+            may = []
+            for b in range(len(text)):
+                may.append(text[b])
+
+            may[i] = text[i].upper()
+            may = str(may)
+            may = may.replace(',', ''
+        ).replace('[', ''
+        ).replace(']', ''
+        ).replace("'", ''
+        ).replace(" ", ''
+        )
+            main.append(may)
+
+        return main
