@@ -2,6 +2,7 @@ import requests as r
 from load import load
 import os, sys, time
 from datetime import datetime as dt
+from text_func import func
 
 def cls(): #clear command
     os.system("cls")
@@ -36,14 +37,19 @@ In this version spaces will not be displayed as a discord""")
         print("['Test', 'tEst', 'teSt', 'tesT']")
         input("Enter...")
 
+    def r():
+        print("we can't show you this")
+        input("Enter...")
+
     while True:
 
         print('''Select the mod you want to see:
-        1>std
-        2>stairs
-        3>running_line
-        4>wave
-        e>exit
+    1>std
+    2>stairs
+    3>running_line
+    4>wave
+    5>random
+    e>exit
         ''')
         choose = input(">")
 
@@ -71,6 +77,12 @@ In this version spaces will not be displayed as a discord""")
             cls()
             continue
 
+        elif choose == "5":
+            cls()
+            r()
+            cls()
+            continue
+
         elif choose == "e":
             cls()
             break
@@ -81,7 +93,7 @@ In this version spaces will not be displayed as a discord""")
 
 def chs(): #function for select settings
     while True:
-        sltime = input("Enter Interval (recommend >= 1): ")
+        sltime = input("Enter Interval (recommend >= 4): ")
 
         try:
             sltime = float(sltime)
@@ -95,6 +107,7 @@ def chs(): #function for select settings
     2>stairs
     3>running_line
     4>wave
+    5>random
 ''')
         choose = input(">")
 
@@ -109,6 +122,9 @@ def chs(): #function for select settings
 
         elif choose == "4":
             mode = "wave"
+
+        elif choose == "5":
+            mode = "random"
 
         else:
             cls()
@@ -157,10 +173,22 @@ def main(): #"main" func
 #working func {}
 def work(mode, sltime):
     try:
+        rand_text = ''
+        isRandom = False
         head, text, emoji, url = load()._init_(mode=mode)
+
+        if mode == "random":
+            rand_text = text
+            text = "."
+            isRandom = True
+
         while True:
             for i in text:
-                print("the program works")
+                if isRandom:
+                    i = func().rand(rand_text)
+
+                print("the program working")
+                print("your text = '{}'".format(i))
                 expires_time = dt.isoformat(dt.fromtimestamp(int(dt.timestamp(dt.utcnow())) + sltime + 3))
                 payload = {'custom_status': {'text': i, 'expires_at': expires_time, "emoji_name": emoji}}
                 a = r.patch(url, headers=head, json=payload)

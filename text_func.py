@@ -1,3 +1,5 @@
+import random
+
 class func():
     def _init_(self, text, mode="std"):
         if mode == "std":
@@ -8,6 +10,8 @@ class func():
             sequence = self.running_line(text)
         elif mode == "wave":
             sequence = self.wave(text)
+        elif mode == "random":
+            sequence = None
         else:
             print("problems with mode choice")
 
@@ -54,15 +58,27 @@ class func():
             may = []
             for b in range(len(text)):
                 may.append(text[b])
-
-            may[i] = text[i].upper()
-            may = str(may)
-            may = may.replace(',', ''
-        ).replace('[', ''
-        ).replace(']', ''
-        ).replace("'", ''
-        ).replace(" ", ''
-        )
-            main.append(may)
+            if may[i] != " ":
+                may[i] = text[i].upper()
+                may = str(may)
+                may = may.replace(',', ''
+                        ).replace("['", ''
+                        ).replace("']", ''
+                        ).replace("' '", ''
+                        ).replace(" ", '   '
+                        ).replace("   ", ' ')
+                main.append(may)
+            else:
+                pass
 
         return main
+
+    def rand(self, text):
+        xd = []
+        for i in text:
+            xd.append(i)
+
+        seq = ''
+        for i in range(len(xd)):
+            seq += xd[random.randint(0, len(xd)-1)]
+        return seq

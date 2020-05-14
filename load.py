@@ -4,7 +4,11 @@ from text_func import func
 class load():
     def _init_(self, mode="std"):
         head, text, emoji, url = self.load()
-        text = func()._init_(text, mode=mode)
+
+        if mode != "random":
+            text = func()._init_(text, mode=mode)
+        else:
+            pass
 
         return head, text, emoji, url
 
