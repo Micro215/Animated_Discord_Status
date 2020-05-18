@@ -1,5 +1,6 @@
 import random
 
+
 class func():
     def _init_(self, text, mode="std"):
         if mode == "std":
@@ -26,13 +27,13 @@ class func():
             b = ''
             c = []
             for i in text:
-                b+='{}'.format(i)
+                b += '{}'.format(i)
                 c.append(b)
             x = len(b)
             x1 = 0
-            while x>0:
-                x-=1
-                x1-=1
+            while x > 0:
+                x -= 1
+                x1 -= 1
                 c.append(b[:x1])
             c.remove('')
             c.pop()
@@ -44,12 +45,13 @@ class func():
 
     def running_line(self, text):
         main = []
+
         def show(text, maximum, symbol=" "):
-             text = symbol * maximum + text
-             for i in range(len(text)):
-                 a = '{0}'.format(text[i:i + maximum])
-                 main.append(a)
-             return main
+            text = symbol * maximum + text
+            for i in range(len(text)):
+                a = '{0}'.format(text[i:i + maximum])
+                main.append(a)
+                return main
         return show(text, len(text))
 
     def wave(self, text):

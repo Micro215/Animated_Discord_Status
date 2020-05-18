@@ -1,13 +1,17 @@
 import requests as r
 from load import load
-import os, sys, time
+import os
+import sys
+import time
 from datetime import datetime as dt
 from text_func import func
 
-def cls(): #clear command
+
+def cls():  # clear command
     os.system("cls")
 
-def help(): #from README
+
+def help():  # from README
     print('''For the program to start working
 you need to replace "null" in "settings.json"
 with the necessary parameters (you can leave "emoji" as it is).
@@ -17,23 +21,23 @@ If you use the standard function, separate the words ";".
 If you read this press "Enter"''')
     input()
 
-def mods_ex(): #examples of modes
 
-    def std(): #standart mode
+def mods_ex():  # examples of modes
+    def std():  # standart mode
         print('["text1", "text2", ...]')
         input("Enter...")
 
-    def stairs(): #stairs mode
+    def stairs():  # stairs mode
         print('["t", "te", "tex", "text", "tex", "te"]')
         input("Enter...")
 
-    def running_line(): #running_line mode
+    def running_line():  # running_line mode
         print("""['    ', '   t', '  te', ' tes', 'test', 'est', 'st', 't']
 p.s.
 In this version spaces will not be displayed as a discord""")
         input("Enter...")
 
-    def wave(): #wave mode
+    def wave():  # wave mode
         print("['Test', 'tEst', 'teSt', 'tesT']")
         input("Enter...")
 
@@ -91,7 +95,8 @@ In this version spaces will not be displayed as a discord""")
             cls()
             continue
 
-def chs(): #function for select settings
+
+def chs():  # function for select settings
     while True:
         sltime = input("Enter Interval (recommend >= 4): ")
 
@@ -133,7 +138,8 @@ def chs(): #function for select settings
         return mode, sltime
         break
 
-def main(): #"main" func
+
+def main():  # "main" func
     cls()
     while True:
         print('''Select an action
@@ -170,7 +176,8 @@ def main(): #"main" func
             cls()
             continue
 
-#working func {}
+
+# working func {}
 def work(mode, sltime):
     try:
         rand_text = ''
@@ -189,8 +196,9 @@ def work(mode, sltime):
 
                 print("the program working")
                 print("your text = '{}'".format(i))
-                expires_time = dt.isoformat(dt.fromtimestamp(int(dt.timestamp(dt.utcnow())) + sltime + 3))
-                payload = {'custom_status': {'text': i, 'expires_at': expires_time, "emoji_name": emoji}}
+                expires_time = dt.isoformat(dt.fromtimestamp(int(dt.timestamp(dt.utcnow())) + sltime + 3))  # Hillkton Love you <3
+                payload = {'custom_status': {'text': i,
+                           'expires_at': expires_time, "emoji_name": emoji}}
                 a = r.patch(url, headers=head, json=payload)
                 print(a)
                 if a == '<Response [401]>':
@@ -199,5 +207,6 @@ def work(mode, sltime):
                 cls()
     except Exception:
         print(sys.exc_info()[1])
+
 
 main()

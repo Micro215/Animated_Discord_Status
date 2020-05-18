@@ -1,6 +1,7 @@
 import json
 from text_func import func
 
+
 class load():
     def _init_(self, mode="std"):
         head, text, emoji, url = self.load()
@@ -32,14 +33,14 @@ class load():
 
         good = 0
 
-        if head["Authorization"] == None:
+        if head["Authorization"] is None:
             print('Write your AuthToken in "settings.json"')
         elif head["Content-type"] != "application/json":
             print('don`t change other parameters')
         else:
             good += 1
 
-        if text == None:
+        if text is None:
             print('Write your text in "settings.json"')
         else:
             good += 1
