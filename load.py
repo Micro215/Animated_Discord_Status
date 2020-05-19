@@ -14,7 +14,7 @@ class load():
         return head, text, emoji, url
 
     def load(self):
-        with open("settings.json", "r", encoding="utf8") as set:
+        with open("settings.json", "r", encoding="utf-8-sig") as set:
             setting = json.load(set)
 
         head = setting["head"]
